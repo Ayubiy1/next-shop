@@ -8,10 +8,12 @@ import { AiOutlineMenuFold } from "react-icons/ai";
 import "./style.css";
 import { Drawer } from "antd";
 import { useState } from "react";
+import { serSearch } from "../store/counterSlice";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
-  const counter = useAppSelector((store) => store?.counter);
   const dispatch = useAppDispatch();
+  const route = useRouter();
 
   const [open, setOpen] = useState(false);
 
@@ -22,10 +24,16 @@ const Header = () => {
   const onClose = () => {
     setOpen(false);
   };
+
   return (
     <HeaderWrapper>
       <div className="flex items-center justify-between py-3">
-        <div className="logo flex items-center">
+        <div
+          className="logo flex items-center cursor-pointer"
+          onClick={() => {
+            route.push("/");
+          }}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="44"
@@ -93,7 +101,13 @@ const Header = () => {
         </div>
 
         <div className="search">
-          <input className="text-[15px] ps-2" placeholder="Search" />
+          <input
+            className="text-[15px] ps-2"
+            placeholder="Search"
+            onChange={(e) => {
+              dispatch(serSearch(e.target.value.trim()));
+            }}
+          />
           <Button variant="contained" className="btn">
             Search
           </Button>

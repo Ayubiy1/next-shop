@@ -35,7 +35,7 @@
   line-height: normal;
 }
 .menu-btn {
-  display: none;
+  display: none !important;
 }
 
 @media screen and (max-width: 1023px) {
@@ -43,6 +43,6 @@
     display: none !important;
   }
   .menu-btn {
-    display: block;
+    display: block !important;
   }
 }
