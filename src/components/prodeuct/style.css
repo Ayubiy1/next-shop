@@ -1,0 +1,54 @@
+.slider {
+  overflow: hidden;
+  width: 70%;
+  margin: 30px auto;
+}
+.slider input {
+  display: none;
+}
+.slider figure {
+  display: flex;
+  width: 500%;
+  margin: 0;
+  left: 0;
+}
+.slider figure img {
+  width: 20%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: 1s;
+}
+.navigationBtn {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+.manualBtn {
+  border: 2px solid whitesmoke;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+.manualBtn:hover {
+  background-color: blue;
+}
+.manualBtn {
+  background-color: gray;
+}
+
+#radioBtn1:checked ~ .first {
+  margin-left: 10%;
+}
+#radioBtn2:checked ~ .first {
+  margin-left: -20%;
+}
+#radioBtn3:checked ~ .first {
+  margin-left: -40%;
+}
+#radioBtn4:checked ~ .first {
+  margin-left: -60%;
+}
+#radioBtn5:checked ~ .first {
+  margin-left: -80%;
+}

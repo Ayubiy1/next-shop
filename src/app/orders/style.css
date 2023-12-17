@@ -1,0 +1,20 @@
+.price-m {
+  display: none !important;
+}
+
+@media screen and (max-width: 580px) {
+  .card > div {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .card > div > img {
+    width: 100% !important;
+    height: 200px !important;
+  }
+  .card > .price {
+    display: none !important;
+  }
+  .price-m {
+    display: block !important;
+  }
+}

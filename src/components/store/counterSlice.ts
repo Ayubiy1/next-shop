@@ -11,6 +11,7 @@ export interface CounterState {
   productID: number;
   product: Record<string, any>;
   products: any;
+  orders: any;
 }
 
 const initialState: CounterState = {
@@ -19,10 +20,11 @@ const initialState: CounterState = {
   filterBrand: "All",
   filterFeature: "All",
   search: "",
-  sliceData: 5,
+  sliceData: 10,
   productID: 1,
   product: {},
   products: JSON.parse(localStorage.getItem("products-all") || `{}`) || [],
+  orders: JSON.parse(localStorage.getItem("orders-all") || `[]`) || [],
 };
 
 export const counterSlice = createSlice({
@@ -50,6 +52,23 @@ export const counterSlice = createSlice({
       state.products = action.payload;
       localStorage.setItem("products-all", JSON.stringify(state.products));
     },
+    setOrders: (state, action: PayloadAction<Record<string, any>>) => {
+      state.orders.push(action.payload);
+      localStorage.setItem("orders-all", JSON.stringify(state.orders));
+    },
+    setRemoveOrder: (state, action: PayloadAction<number>) => {
+      console.log(
+        (state.orders = state.orders.filter(
+          (o: Record<string, any>) => o.id !== action.payload
+        ))
+      );
+
+      state.orders ==
+        state.orders.filter(
+          (o: Record<string, any>) => o.id !== action.payload
+        );
+      localStorage.setItem("orders-all", JSON.stringify(state.orders));
+    },
   },
 });
 
@@ -60,6 +79,8 @@ export const {
   serSearch,
   setProducts,
   setProductsAll,
+  setOrders,
+  setRemoveOrder,
 } = counterSlice.actions;
 
 export default counterSlice.reducer;

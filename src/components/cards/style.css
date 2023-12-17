@@ -2,7 +2,7 @@
   width: 100% !important;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
 }
 .cards-table {
   display: none !important;
@@ -31,6 +31,11 @@
 .search-sm {
   display: block;
 }
+
+.MuiPaper-root {
+  width: 400px !important;
+}
+
 @media screen and (max-width: 664px) {
   .cards {
     display: none !important;
