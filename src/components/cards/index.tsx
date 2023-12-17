@@ -11,135 +11,9 @@ import { useRouter } from "next/navigation";
 import { GoPlus } from "react-icons/go";
 import { FiMinus } from "react-icons/fi";
 import { useState } from "react";
+import Image from "next/image";
 
 const { Search } = Input;
-
-type Anchor = "top" | "left" | "bottom" | "right";
-
-// const TemporaryDrawer = (item: Record<string, any>) => {
-//   const [state, setState] = React.useState({
-//     top: false,
-//     left: false,
-//     bottom: false,
-//     right: false,
-//   });
-//   const [orderCount, setOrderCount] = React.useState(1);
-
-//   const dispatch = useAppDispatch();
-
-//   React.useEffect(() => {
-//     setOrderCount(0);
-//   }, []);
-
-//   const toggleDrawer =
-//     (anchor: Anchor, open: boolean) =>
-//     (event: React.KeyboardEvent | React.MouseEvent) => {
-//       if (
-//         event.type === "keydown" &&
-//         ((event as React.KeyboardEvent).key === "Tab" ||
-//           (event as React.KeyboardEvent).key === "Shift")
-//       ) {
-//         return;
-//       }
-
-//       setState({ ...state, [anchor]: open });
-//     };
-
-//   const list = (anchor: Anchor) => (
-//     <Box
-//       role="presentation"
-//       onClick={toggleDrawer(anchor, false)}
-//       onKeyDown={toggleDrawer(anchor, false)}
-//     >
-//       <div></div>
-//       <div className="w-[100%] mt-5 flex flex-col">
-//         <img
-//           src={item?.item?.imgs[0].src}
-//           alt=""
-//           className="w-[90%] h-[300px] object-cover mx-auto"
-//         />
-//       </div>
-
-//       <div className="ps-5 mt-5">
-//         <Typography className="text-start">
-//           Product title: {item?.item?.title}
-//         </Typography>
-//         <Typography className="text-start">
-//           Product price: ${item?.item?.price}
-//         </Typography>
-
-//         <Typography>All sum {orderCount * item?.item?.price}</Typography>
-
-//         <div className="flex gap-3 mt-3 items-center justify-start">
-//           <span
-//             className="flex items-center justify-center"
-//             onClick={() => {
-//               setOrderCount((prev) => {
-//                 if (prev == 0) {
-//                   return 1;
-//                 } else {
-//                   return prev - 1;
-//                 }
-//               });
-//             }}
-//           >
-//             <FiMinus />
-//           </span>
-//           <span>{orderCount}</span>
-//           <span
-//             className="flex items-center justify-center"
-//             onClick={() => {
-//               setOrderCount((prev) => prev + 1);
-//             }}
-//           >
-//             <GoPlus />
-//           </span>
-//         </div>
-
-//         <Button
-//           type="primary"
-//           className="ms-auto text-right mt-2"
-//           onClick={() => {
-//             const order = {
-//               id: item?.item?.id,
-//               name: item?.item?.title,
-//               count: orderCount,
-//               price: item?.item?.price,
-//             };
-//             dispatch(setOrders(order));
-//           }}
-//         >
-//           Buy
-//         </Button>
-//       </div>
-//     </Box>
-//   );
-
-//   const on = () => {
-//     toggleDrawer("right", true);
-//   };
-
-//   return (
-//     <div>
-//       <React.Fragment key={"right"}>
-//         {/* alert("asdadas"); */}
-
-//         <span onClick={on}>
-//           <FaCartPlus />
-//         </span>
-//         <Drawer
-//           anchor={"right"}
-//           open={state["right"]}
-//           onClose={toggleDrawer("right", false)}
-//           // className="w-[300px]"
-//           // sx={{ width: "1100px" }}
-//         >
-//           {list("right")}
-//         </Drawer>
-//       </React.Fragment>
-//     </div>
-//   );
-// };
 
 const TemporaryDrawer = (item: Record<string, any>) => {
   const [open, setOpen] = useState(false);
@@ -167,7 +41,7 @@ const TemporaryDrawer = (item: Record<string, any>) => {
         open={open}
       >
         <div className="w-[100%] mt-5 flex flex-col">
-          <img
+          <Image
             src={item?.item?.imgs[0].src}
             alt=""
             className="w-[90%] h-[300px] object-cover mx-auto"
@@ -277,7 +151,7 @@ const CardsPage = ({
                   className={"cursor-pointer card relative rounded-sm"}
                   style={{ border: "none", background: "transparent" }}
                 >
-                  <img
+                  <Image
                     src={item.imgs[0].src}
                     className="w-[100%] h-[300px] object-cover rounded-lg pro-img"
                     alt={item?.title}
@@ -371,7 +245,7 @@ const CardsPage = ({
                   style={{ border: "none", background: "transparent" }}
                 >
                   <div className="flex gap-3 items-center justify-between">
-                    <img
+                    <Image
                       src={item.imgs[0].src}
                       className="w-[100%] h-[300px] object-cover rounded-lg pro-img"
                       alt={item?.title}

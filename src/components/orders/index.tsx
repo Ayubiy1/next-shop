@@ -7,6 +7,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
 import "./style.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const OrdersPage = () => {
   const dispatch = useAppDispatch();
@@ -41,7 +42,7 @@ const OrdersPage = () => {
                 className="flex items-start justify-between card"
               >
                 <div className="flex gap-5 items-start">
-                  <img
+                  <Image
                     src={order?.imgs[0].src}
                     className="w-[111px] h-[111px] object-cover rounded-md"
                     alt=""

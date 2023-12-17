@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import "./style.css";
 import { FaArrowLeft } from "react-icons/fa";
+import Image from "next/image";
 
 const ProductPage = () => {
   const products = useAppSelector((state) => state.counter.products);
@@ -44,7 +45,7 @@ const ProductPage = () => {
               style={{ border: "1px solid #c4b6b66b" }}
             >
               <div className="hidden md:block gap-2 items-start">
-                <img
+                <Image
                   src={img}
                   alt={item.title}
                   className="w-[89%] h-[500px] md:w-[350px]"
@@ -52,7 +53,7 @@ const ProductPage = () => {
                 <div className="flex items-center justify-between flex-col md:flex-row order-1 gap-5 w-[11%]">
                   {item?.imgs.map((i: Record<string, any>) => {
                     return (
-                      <img
+                      <Image
                         key={i?.id}
                         src={i?.src}
                         className="w-[100%] md:w-[50px] md:h-[50px] h-[40px] object-cover p-1 rounded-md cursor-pointer"
@@ -81,7 +82,7 @@ const ProductPage = () => {
                     .map((img: Record<string, any>, index: number) => {
                       return (
                         <div key={img?.id}>
-                          <img className="w-[100%]" src={img?.src} alt="" />
+                          <Image className="w-[100%]" src={img?.src} alt="" />
                           <div className="bg-[#808080ad] w-[60px] h-[30px] flex items-center justify-between rounded-3xl ms-auto">
                             <button
                               onClick={() => {
