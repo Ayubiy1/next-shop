@@ -1,16 +1,18 @@
 "use client";
 import { Typography } from "antd";
 import { useAppSelector } from "../store/hooks";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import "./style.css";
+import { FaArrowLeft } from "react-icons/fa";
 
 const ProductPage = () => {
   const products = useAppSelector((state) => state.counter.products);
   const pathName = usePathname();
   const [activeImg, setActiveImg] = useState(0);
   const [img, setImgs] = useState("");
+  const router = useRouter();
 
   const product = products.filter(
     (p: Record<string, any>) => p.id == pathName.slice(1)
@@ -25,6 +27,15 @@ const ProductPage = () => {
   return (
     <>
       <div className="select-none">
+        <span
+          onClick={() => {
+            router.push("/");
+          }}
+          className="cursor-pointer m-5 text-[20px]"
+        >
+          <FaArrowLeft />
+        </span>
+
         {product.map((item: Record<string, any>) => {
           return (
             <div

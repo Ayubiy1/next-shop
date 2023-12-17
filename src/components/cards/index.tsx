@@ -1,6 +1,5 @@
 "use client";
 
-// import * as React from "react";
 import { Button, Drawer, Input, Typography } from "antd";
 import "./style.css";
 
@@ -368,79 +367,74 @@ const CardsPage = ({
               return (
                 <div
                   key={item?.id}
-                  className={"cursor-pointer card relative"}
+                  className={"cursor-pointer card relative my-3"}
                   style={{ border: "none", background: "transparent" }}
                 >
-                  <img
-                    src={item.imgs[0].src}
-                    className="w-[100%] h-[300px] object-cover rounded-lg pro-img"
-                    alt={item?.title}
-                  />
+                  <div className="flex gap-3 items-center justify-between">
+                    <img
+                      src={item.imgs[0].src}
+                      className="w-[100%] h-[300px] object-cover rounded-lg pro-img"
+                      alt={item?.title}
+                    />
+                    <div>
+                      <Typography
+                        rel="noopener noreferrer"
+                        className="text-[#606060]"
+                      >
+                        {item?.title}
+                      </Typography>
 
-                  <div className={"px-2"}>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="flex gap-1 items-center justify-start">
-                          <Typography className="font-bold">
-                            ${Math.floor(item?.price / 1.1)}
-                          </Typography>
+                      <div className="flex gap-1 items-center justify-start">
+                        <Typography className="font-bold">
+                          ${Math.floor(item?.price / 1.1)}
+                        </Typography>
 
-                          <Typography
-                            className="text-[#8b8e99]"
-                            style={{ textDecoration: "line-through" }}
-                          >
-                            ${item?.price}
-                          </Typography>
-                        </div>
-
-                        <div className="text-[#8b8e99] text-[11px] flex items-center gap-1 my-2">
-                          <span className="text-yellow-500">
-                            <StarFilled />
-                          </span>
-                          <span className="text-yellow-500">
-                            <StarFilled />
-                          </span>
-                          <span className="text-yellow-500">
-                            <StarFilled />
-                          </span>
-                          <span className="text-yellow-500">
-                            <StarFilled />
-                          </span>
-                          <span className="text-yellow-500">
-                            <StarFilled />
-                          </span>
-                          {item?.baho}
-                        </div>
+                        <Typography
+                          className="text-[#8b8e99]"
+                          style={{ textDecoration: "line-through" }}
+                        >
+                          ${item?.price}
+                        </Typography>
                       </div>
 
-                      <span
-                        className={`text-[22px] like ${
-                          item?.like !== false ? "text-[#0D6EFD]" : ""
-                        }`}
-                        onClick={() => {
-                          setData((prevData: any) => {
-                            return prevData.map(
-                              (itemPrev: Record<string, any>) => {
-                                if (item.id === itemPrev.id) {
-                                  return { ...item, like: !item.like };
-                                }
-                                return itemPrev;
-                              }
-                            );
-                          });
-                        }}
-                      >
-                        {item?.like ? <HeartFilled /> : <HeartOutlined />}
-                      </span>
+                      <div className="text-[#8b8e99] text-[11px] flex items-center gap-1 my-2">
+                        <span className="text-yellow-500">
+                          <StarFilled />
+                        </span>
+                        <span className="text-yellow-500">
+                          <StarFilled />
+                        </span>
+                        <span className="text-yellow-500">
+                          <StarFilled />
+                        </span>
+                        <span className="text-yellow-500">
+                          <StarFilled />
+                        </span>
+                        <span className="text-yellow-500">
+                          <StarFilled />
+                        </span>
+                        {item?.baho}
+                      </div>
                     </div>
-
-                    <Typography
-                      rel="noopener noreferrer"
-                      className="text-[#606060]"
-                    >
-                      {item?.title}
-                    </Typography>
                   </div>
+
+                  <span
+                    className={`text-[22px] like ${
+                      item?.like !== false ? "text-[#0D6EFD]" : ""
+                    }`}
+                    onClick={() => {
+                      setData((prevData: any) => {
+                        return prevData.map((itemPrev: Record<string, any>) => {
+                          if (item.id === itemPrev.id) {
+                            return { ...item, like: !item.like };
+                          }
+                          return itemPrev;
+                        });
+                      });
+                    }}
+                  >
+                    {item?.like ? <HeartFilled /> : <HeartOutlined />}
+                  </span>
                 </div>
               );
             })}

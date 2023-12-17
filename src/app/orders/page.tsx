@@ -3,16 +3,29 @@
 import { setRemoveOrder } from "@/components/store/counterSlice";
 import { useAppDispatch, useAppSelector } from "@/components/store/hooks";
 import { Button, Typography } from "antd";
+import { FaArrowLeft } from "react-icons/fa";
+
 import "./style.css";
+import { useRouter } from "next/navigation";
 
 const Orders = () => {
   const dispatch = useAppDispatch();
   const orders = useAppSelector((state) => state?.counter?.orders);
+  const router = useRouter();
 
   return (
     <>
       <div>
         <h2>Orders ({orders.length})</h2>
+
+        <span
+          onClick={() => {
+            router.push("/");
+          }}
+          className="cursor-pointer"
+        >
+          <FaArrowLeft />
+        </span>
 
         <div>
           {orders.map((order: Record<string, any>) => {
