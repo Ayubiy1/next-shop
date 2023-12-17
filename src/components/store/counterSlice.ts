@@ -24,9 +24,18 @@ const initialState: CounterState = {
   productID: 1,
   product: {},
   // JSON.parse(localStorage.getItem("products-all") || '[]');
-  products: JSON.parse(localStorage.getItem("products-all") || "[]"),
-  orders: JSON.parse(localStorage.getItem("orders-all") || `[]`),
+  // products: JSON.parse(localStorage.getItem("products-all") || "[]"),
+  products: [],
+  // orders: JSON.parse(localStorage.getItem("orders-all") || `[]`),
+  orders: [],
 };
+
+if (typeof window !== "undefined") {
+  initialState.products = JSON.parse(
+    localStorage.getItem("products-all") || "[]"
+  );
+  initialState.orders = JSON.parse(localStorage.getItem("orders-all") || "[]");
+}
 
 export const counterSlice = createSlice({
   name: "counter",
