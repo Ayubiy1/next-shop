@@ -6,24 +6,39 @@ import { useEffect, useState } from "react";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import "./style.css";
 import { FaArrowLeft } from "react-icons/fa";
+import { Avatar } from "@mui/material";
 import Image from "next/image";
 
 const ProductPage = () => {
   const products = useAppSelector((state) => state.counter.products);
-  const pathName = usePathname();
+  const pathName: string = usePathname();
   const [activeImg, setActiveImg] = useState(0);
-  const [img, setImgs] = useState("");
   const router = useRouter();
 
   const product = products.filter(
     (p: Record<string, any>) => p.id == pathName.slice(1)
   );
 
-  useEffect(() => {
+  const [img, setImgs] = useState(
     product?.map((p: Record<string, any>) => {
-      setImgs(p?.imgs[0].src);
-    });
-  }, [pathName]);
+      return p?.imgs[0].src;
+    })
+  );
+
+  useEffect(() => {
+    if (product) {
+      const firstProductImage = product?.[0]?.imgs[0]?.src;
+      if (firstProductImage) {
+        setImgs(firstProductImage);
+      }
+    }
+  }, [product, pathName]);
+
+  // useEffect(() => {
+  //   product?.map((p: Record<string, any>) => {
+  //     setImgs(p?.imgs[0].src);
+  //   });
+  // }, [pathName]);
 
   return (
     <>
@@ -48,7 +63,9 @@ const ProductPage = () => {
                 <Image
                   src={img}
                   alt={item.title}
-                  className="w-[89%] h-[500px] md:w-[350px]"
+                  className="w-[89%] h-[500px] md:w-[350px] object-cover"
+                  width={100}
+                  height={300}
                 />
                 <div className="flex items-center justify-between flex-col md:flex-row order-1 gap-5 w-[11%]">
                   {item?.imgs.map((i: Record<string, any>) => {
@@ -56,6 +73,8 @@ const ProductPage = () => {
                       <Image
                         key={i?.id}
                         src={i?.src}
+                        width={50}
+                        height={40}
                         className="w-[100%] md:w-[50px] md:h-[50px] h-[40px] object-cover p-1 rounded-md cursor-pointer"
                         style={{
                           border: `1px solid ${
@@ -82,7 +101,13 @@ const ProductPage = () => {
                     .map((img: Record<string, any>, index: number) => {
                       return (
                         <div key={img?.id}>
-                          <Image className="w-[100%]" src={img?.src} alt="" />
+                          <Image
+                            className="w-[100%] object-cover"
+                            src={img?.src}
+                            alt=""
+                            width={100}
+                            height={300}
+                          />
                           <div className="bg-[#808080ad] w-[60px] h-[30px] flex items-center justify-between rounded-3xl ms-auto">
                             <button
                               onClick={() => {

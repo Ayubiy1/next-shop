@@ -43,6 +43,8 @@ const OrdersPage = () => {
               >
                 <div className="flex gap-5 items-start">
                   <Image
+                    width={111}
+                    height={111}
                     src={order?.imgs[0].src}
                     className="w-[111px] h-[111px] object-cover rounded-md"
                     alt=""

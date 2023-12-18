@@ -58,7 +58,7 @@ export const counterSlice = createSlice({
       console.log(state.product);
       // localStorage.setItem("product", JSON.stringify(action.payload));
     },
-    setProductsAll: (state, action: PayloadAction) => {
+    setProductsAll: (state, action: PayloadAction<Record<string, any>>) => {
       state.products = action.payload;
       // localStorage.setItem("products-all", JSON.stringify(state.products));
     },

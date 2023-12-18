@@ -45,6 +45,8 @@ const TemporaryDrawer = (item: Record<string, any>) => {
             src={item?.item?.imgs[0].src}
             alt=""
             className="w-[90%] h-[300px] object-cover mx-auto"
+            width={90}
+            height={300}
           />
         </div>
         <div className="ps-5 mt-5">
@@ -114,7 +116,7 @@ const CardsPage = ({
   totalPages,
 }: {
   data: Record<string, any>;
-  setData: (data: Record<string, any>) => void;
+  setData: (data: any) => void;
   currentPage: number;
   totalPages: number;
   handleChangePage: (event: any, value: number) => void;
@@ -152,8 +154,10 @@ const CardsPage = ({
                   style={{ border: "none", background: "transparent" }}
                 >
                   <Image
+                    width={100}
+                    height={300}
                     src={item.imgs[0].src}
-                    className="w-[100%] h-[300px] object-cover rounded-lg pro-img"
+                    className="w-full h-[300px] object-cover pro-img"
                     alt={item?.title}
                     onClick={() => {
                       dispatch(setProducts(item));
@@ -247,7 +251,9 @@ const CardsPage = ({
                   <div className="flex gap-3 items-center justify-between">
                     <Image
                       src={item.imgs[0].src}
-                      className="w-[100%] h-[300px] object-cover rounded-lg pro-img"
+                      className="w-full h-[300px] object-cover pro-img"
+                      width={100}
+                      height={300}
                       alt={item?.title}
                     />
                     <div>
