@@ -34,12 +34,6 @@ const ProductPage = () => {
     }
   }, [product, pathName]);
 
-  // useEffect(() => {
-  //   product?.map((p: Record<string, any>) => {
-  //     setImgs(p?.imgs[0].src);
-  //   });
-  // }, [pathName]);
-
   return (
     <>
       <div className="select-none">

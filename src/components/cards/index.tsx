@@ -123,7 +123,6 @@ const CardsPage = ({
 }) => {
   const sliceData = useAppSelector((store) => store?.counter?.sliceData);
   const orders = useAppSelector((state) => state?.counter?.orders);
-  console.log(orders);
 
   const router = useRouter();
 
@@ -320,17 +319,19 @@ const CardsPage = ({
             })}
         </div>
 
-        <div className="my-2 flex justify-center sm:items-end sm:justify-end">
-          <Stack spacing={2}>
-            <Pagination
-              count={totalPages}
-              page={currentPage}
-              onChange={handleChangePage}
-              color="primary"
-              className="text-right ms-auto w-full"
-            />
-          </Stack>
-        </div>
+        {data.length > 0 && (
+          <div className="my-2 flex justify-center sm:items-end sm:justify-end">
+            <Stack spacing={2}>
+              <Pagination
+                count={totalPages}
+                page={currentPage}
+                onChange={handleChangePage}
+                color="primary"
+                className="text-right ms-auto w-full"
+              />
+            </Stack>
+          </div>
+        )}
       </div>
     </>
   );
