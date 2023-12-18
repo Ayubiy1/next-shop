@@ -254,6 +254,9 @@ const CardsPage = ({
                       width={100}
                       height={300}
                       alt={item?.title}
+                      onClick={() => {
+                        router.push(`${item?.id}`);
+                      }}
                     />
                     <div>
                       <Typography

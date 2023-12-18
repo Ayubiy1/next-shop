@@ -19,11 +19,7 @@ const ProductPage = () => {
     (p: Record<string, any>) => p.id == pathName.slice(1)
   );
 
-  const [img, setImgs] = useState(
-    product?.map((p: Record<string, any>) => {
-      return p?.imgs[0].src;
-    })
-  );
+  const [img, setImgs] = useState("");
 
   useEffect(() => {
     if (product) {
@@ -57,7 +53,7 @@ const ProductPage = () => {
             >
               <div className="hidden md:block gap-2 items-start">
                 <Image
-                  src={img}
+                  src={img || item?.imgs[0].src}
                   alt={item.title}
                   className="w-[89%] h-[500px] md:w-[350px] object-cover"
                   width={100}
