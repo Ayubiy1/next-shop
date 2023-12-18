@@ -30,12 +30,12 @@ const initialState: CounterState = {
   orders: [],
 };
 
-if (typeof window !== "undefined") {
-  initialState.products = JSON.parse(
-    localStorage.getItem("products-all") || "[]"
-  );
-  initialState.orders = JSON.parse(localStorage.getItem("orders-all") || "[]");
-}
+// if (typeof window !== "undefined") {
+//   initialState.products = JSON.parse(
+//     localStorage.getItem("products-all") || "[]"
+//   );
+//   initialState.orders = JSON.parse(localStorage.getItem("orders-all") || "[]");
+// }
 
 export const counterSlice = createSlice({
   name: "counter",
@@ -56,15 +56,15 @@ export const counterSlice = createSlice({
     setProducts: (state, action: PayloadAction<Object>) => {
       state.product = action.payload;
       console.log(state.product);
-      localStorage.setItem("product", JSON.stringify(action.payload));
+      // localStorage.setItem("product", JSON.stringify(action.payload));
     },
     setProductsAll: (state, action: PayloadAction) => {
       state.products = action.payload;
-      localStorage.setItem("products-all", JSON.stringify(state.products));
+      // localStorage.setItem("products-all", JSON.stringify(state.products));
     },
     setOrders: (state, action: PayloadAction<Record<string, any>>) => {
       state.orders.push(action.payload);
-      localStorage.setItem("orders-all", JSON.stringify(state.orders));
+      // localStorage.setItem("orders-all", JSON.stringify(state.orders));
     },
     setRemoveOrder: (state, action: PayloadAction<number>) => {
       console.log(
@@ -77,7 +77,7 @@ export const counterSlice = createSlice({
         state.orders.filter(
           (o: Record<string, any>) => o.id !== action.payload
         );
-      localStorage.setItem("orders-all", JSON.stringify(state.orders));
+      // localStorage.setItem("orders-all", JSON.stringify(state.orders));
     },
   },
 });
