@@ -28,11 +28,13 @@ const ProductPage = () => {
   useEffect(() => {
     if (product) {
       const firstProductImage = product?.[0]?.imgs[0]?.src;
-      if (firstProductImage) {
-        setImgs(firstProductImage);
+      if (product) {
+        product.map((i: Record<string, any>) => {
+          setImgs(i?.[0]?.imgs[0]?.src);
+        });
       }
     }
-  }, [product, pathName]);
+  }, [activeImg, pathName]);
 
   return (
     <>
